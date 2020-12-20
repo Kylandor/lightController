@@ -11,10 +11,10 @@ green = 255
 blue = 0
 move = -1
 while True:
-pixels.fill((red, green, blue))
-green += move
-if green == 255:
-    move = -1
-elif green == 0:
-    move = 1
-pixels.show()
+    pixels.fill((red, green, blue))
+    green += move
+    if green == 255:
+        move = -1
+    elif green == 0:
+        move = 1
+    pixels.show()
