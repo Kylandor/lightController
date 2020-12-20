@@ -18,25 +18,23 @@ pixels = neopixel.NeoPixel(
     board.D18, NUM_LEDS, brightness=0.8, auto_write=False, pixel_order=ORDER
 )
 
-r = 100
-g = 100
-b = 100
-add = 1
+firstLine = True
+data = []
+f = open("data.txt" , "r")
+for x in f:
+    data.append(x)
 while True:
-    pixels.fill((r, b, g))
-    rRand = randrange(2)
-    gRand = randrange(2)
-    bRand = randrange(2)
-    if rRand:
-        r +=1
-    else:
-        r -=1
-    if gRand:
-        g +=1
-    else:
-        g -=1
-    if bRand:
-        b +=1
-    else:
-        b -=1
+    if firstLine:
+        cur = data[0]
+    if not firstLine:
+        cur = data[1]
+
+    for ind, i in enumberate(cur):
+        if i == "0":
+            pixels[ind] = Color(0, 255, 0)
+        elif i == "1":
+            pixels[ind] = Color(255, 0, 0)
+        
     pixels.show()
+    firstLine = not firstLine
+    
