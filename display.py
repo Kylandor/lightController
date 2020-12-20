@@ -31,9 +31,9 @@ while True:
 
     for ind, i in enumerate(cur):
         if i == "0":
-            pixels[ind] = Color(0, 255, 0)
+            pixels[ind] = (0, 255, 0)
         elif i == "1":
-            pixels[ind] = Color(255, 0, 0)
+            pixels[ind] = (255, 0, 0)
         
     pixels.show()
     firstLine = not firstLine
