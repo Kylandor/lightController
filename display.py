@@ -2,6 +2,7 @@ import board
 import neopixel
 import atexit
 import time
+import sys
 from random import randrange
 
 def exit_handler():
@@ -39,6 +40,5 @@ while True:
         
     pixels.show()
     firstLine = not firstLine
-    print(cur)
-    time.sleep(1 - (time.time()-curTime))
+    time.sleep(sys.argv[0] - (time.time()-curTime))
     
