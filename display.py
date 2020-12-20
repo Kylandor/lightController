@@ -1,1 +1,1 @@
-print("hello kyle, pleased to kill you, bastard")
+print("im sorry for what i said earlier")
