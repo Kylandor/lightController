@@ -29,7 +29,7 @@ while True:
     if not firstLine:
         cur = data[1]
 
-    for ind, i in enumberate(cur):
+    for ind, i in enumerate(cur):
         if i == "0":
             pixels[ind] = Color(0, 255, 0)
         elif i == "1":
