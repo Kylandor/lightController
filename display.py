@@ -37,4 +37,5 @@ while True:
         
     pixels.show()
     firstLine = not firstLine
+    print(cur)
     
