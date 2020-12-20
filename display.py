@@ -40,5 +40,5 @@ while True:
         
     pixels.show()
     firstLine = not firstLine
-    time.sleep(float(sys.argv[0]) - (time.time()-curTime))
+    time.sleep(float(sys.argv[1]) - (time.time()-curTime))
     
