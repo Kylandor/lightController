@@ -1,6 +1,7 @@
 import board
 import neopixel
 import atexit
+import time
 from random import randrange
 
 def exit_handler():
@@ -24,6 +25,7 @@ f = open("data.txt" , "r")
 for x in f:
     data.append(x)
 while True:
+    curTime = time.time()
     if firstLine:
         cur = data[0]
     if not firstLine:
@@ -38,4 +40,5 @@ while True:
     pixels.show()
     firstLine = not firstLine
     print(cur)
+    time.sleep(1 - (time.time()-curTime))
     
