@@ -17,6 +17,13 @@ pixels = neopixel.NeoPixel(
     board.D18, NUM_LEDS, brightness=0.8, auto_write=False, pixel_order=ORDER
 )
 
+val = 0
+add = 1
 while True:
-    pixels.fill((0, 0, 255))
+    pixels.fill((0, 0, val))
+    val += add
+    if val == 255:
+        add = -1
+    if val ==0:
+        add = 1
     pixels.show()
