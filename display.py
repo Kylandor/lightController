@@ -6,15 +6,5 @@ print("displaying...")
 NUM_LEDS = 150
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS)
 
-red = 0
-green = 255
-blue = 0
-move = -1
-while True:
-    pixels.fill((green, 0, 0))
-    green += move
-    if green == 255:
-        move = -1
-    elif green == 0:
-        move = 1
-    pixels.show()
+pixels.fill((0, 0, 255))
+pixels.show()
