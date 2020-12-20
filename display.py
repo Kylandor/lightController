@@ -11,7 +11,7 @@ green = 255
 blue = 0
 move = -1
 while True:
-    pixels.fill((red, green, blue))
+    pixels.fill((green, 0, 0))
     green += move
     if green == 255:
         move = -1
