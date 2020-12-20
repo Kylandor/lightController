@@ -12,7 +12,11 @@ print("displaying...")
 
 NUM_LEDS = 150
 <<<<<<< HEAD
+<<<<<<< HEAD
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS)
+=======
+pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, 0.8)
+>>>>>>> parent of 8b05c3d... Update display.py
 =======
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, 0.8)
 >>>>>>> parent of 8b05c3d... Update display.py
