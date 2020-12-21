@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, jsonify, request
+import math
 import createData
 
 app = Flask(__name__)
@@ -9,7 +10,7 @@ def home():
     numberOfSec = 0
     data = request.data
     data = data.decode("utf-8")
-    numberOfSec = int(data[data.index("sec=")+4:])
+    numberOfSec = float(data[data.index("sec=")+4:])
     data = data.split("rgb")
     data = data[1:]
     for i in data:
@@ -18,7 +19,7 @@ def home():
         frame.append((int(cur[0]), int(cur[1]), int(cur[2])))
     print(numberOfSec)
     frameData = createData.makePacket(frame)
-    frameData = frameData * (22 *numberOfSec)
+    frameData = frameData * math.ceil(25 *numberOfSec)
     frameData.tofile(f)
     f.close()
     return "ok"
