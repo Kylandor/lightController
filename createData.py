@@ -5,8 +5,8 @@ import random
 # An python array is like a restricted python list 
 # for storing binary data.
 #
-data = array.array('B')  # create array of bytes.
-
+data1 = array.array('B')  # create array of bytes.
+data2 = array.array('B') 
 def makePacket(colors):
     data = array.array('B')
     uniqueColors = []
@@ -51,23 +51,24 @@ colorArray = []
 for i in range(150):
     colorArray.append((255, 0,0))
 
-data = (makePacket(colorArray))
+data1 = (makePacket(colorArray))
 
 
-print(data)
 
 # Write the array at once to a file
 #
 f = open('frames', 'wb')
-data.tofile(f)
+data1.tofile(f)
 f.close()
 
 colorArray = []
 for i in range(150):
     colorArray.append((0, 0, 255))
 
-data = (makePacket(colorArray))
+data2 = (makePacket(colorArray))
+
+superData = (data2 + data1) * 30
 
 f = open('frames', 'ab')
-data.tofile(f)
+superData.tofile(f)
 f.close()
