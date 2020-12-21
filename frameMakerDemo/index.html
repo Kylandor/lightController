@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+
+            th {
+                width: 10px;
+                height: 10px;
+            }
+            </style>
+    </head>
+<body>
+<div style = "text-align: center;">
+    <input type = "text" id = "hex">
+    <input type = "color" id = "color">
+
+
+</div>
+<br>
+<table id = "leds">
+
+</table>
+<br>
+<button id = "sendFrame">Send Frame</button>
+<script>let colorInput = document.querySelector('#color');
+    let hex = document.querySelector('#hex');
+    var mouseDown = 0;
+    document.body.onmousedown = function() { 
+     ++mouseDown;
+    }
+    document.body.onmouseup = function() {
+     --mouseDown;
+    }
+    colorInput.addEventListener('input', () =>{
+    let color = colorInput.value;
+    hex.value = color;
+    
+    
+    
+    });
+
+    function changeColor(led){
+        if(mouseDown ==1){
+        document.getElementById(led).style.backgroundColor = colorInput.value;}
+    }
+    
+    let table = document.getElementById("leds");
+    for( var i = 0; i < 150; i++){
+        var led = document.createElement('th');
+        var name = i.toString();
+        led.setAttribute("id", name);
+        led.setAttribute("onmouseover", "changeColor(" + name + ")");
+        table.appendChild(led);
+        document.getElementById(name).style.backgroundColor = "rgb(255, 255, 255)";
+    }
+    
+    function sendFrame(){
+        let colors = [];
+        for( var i = 0; i < 150; i++){
+            var name = i.toString();
+            var led = document.getElementById(name);
+            colors.push(led.style.backgroundColor);
+    } 
+
+    const Http = new XMLHttpRequest();
+    const url='http://192.168.1.38:5000/';
+    Http.open("POST", url);
+    Http.send(colors);
+        
+    }
+    
+    document.getElementById("sendFrame").setAttribute("onclick", "sendFrame()")</script>
+</body>
+
+
+
+
+</html>
