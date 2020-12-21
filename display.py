@@ -29,7 +29,6 @@ def readFrame(data):
     sizeOfInd = math.ceil(math.log2(numColors + 1))
     for i in range(numColors):
         allColors.append((data[1 + i * 3 + 0], data[1 + i * 3 + 1], data[1 + i * 3 + 2]))
-    print(allColors)
     bits = ""
     curInd = 1 + (3*numColors) 
     while True:
@@ -49,6 +48,7 @@ def readFrame(data):
              pixels[ledInd] = allColors[ledColorIndex]
         ledInd +=1
         bits = bits[sizeOfInd:]
+    pixels.show()
 
 
 f =  open('frames', 'rb')
