@@ -25,7 +25,7 @@ def home():
     return "ok"
 @app.route("/clear", methods = ['GET'] )
 def clearFrame():
-    open("frame", 'w').close()
+    open("frames", 'w').close()
     return "cleared"
 
 if __name__ == '__main__':
