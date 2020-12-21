@@ -51,6 +51,7 @@ def readFrame(data):
     findArray = data[1 + (3 * numColors):]
     findInd = findArray.index(0)
     data = data[(1 + (3 * numColors) + findInd):]
+    print(data)
     pixels.show()
 
 
