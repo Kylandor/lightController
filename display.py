@@ -62,7 +62,9 @@ while byte:
     readData.append(int.from_bytes(byte, "big"))
     byte = f.read(1)
 while len(readData) != 0: 
+    start = time.time()
     readData = readFrame(readData)
-    time.sleep(3)
+    if 0.5 - (time.time()-start) > 0:
+        time.sleep(0.5 - (time.time()-start))
 f.close()
     
