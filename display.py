@@ -65,6 +65,6 @@ while len(readData) != 0:
     start = time.time()
     readData = readFrame(readData)
     if 0.5 - (time.time()-start) > 0:
-        time.sleep(0.5 - (time.time()-start))
+        time.sleep(sys.argv[1] - (time.time()-start))
 f.close()
     
