@@ -63,6 +63,7 @@ while byte:
     byte = f.read(1)
 readData = readFrame(readData)
 time.sleep(3)
+print(readData)
 readFrame(readData)
 f.close()
     
