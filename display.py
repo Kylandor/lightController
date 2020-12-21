@@ -51,8 +51,8 @@ def readFrame(data):
     findArray = data[1 + (3 * numColors):]
     findInd = findArray.index(0)
     data = data[(2 + (3 * numColors) + findInd):]
-    return data
     pixels.show()
+    return data
 
 
 f =  open('frames', 'rb')
@@ -63,7 +63,6 @@ while byte:
     byte = f.read(1)
 readData = readFrame(readData)
 time.sleep(3)
-print(readData)
 readFrame(readData)
 f.close()
     
