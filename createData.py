@@ -51,7 +51,7 @@ for i in range(150):
     if i % 2 == 0:
         colorArray.append((0, 255, 0))
     else:
-        colorArray.append((255, 0, 0))
+        colorArray.append((0, 0, 255))
 
 data = (makePacket(colorArray))
 
@@ -64,12 +64,3 @@ f = open('frames', 'wb')
 data.tofile(f)
 f.close()
 
-f =  open('frames', 'rb')
-
-readData = []
-byte = f.read(1)
-while byte:
-    readData.append(int.from_bytes(byte, "big"))
-    byte = f.read(1)
-readFrame(readData)
-f.close()
