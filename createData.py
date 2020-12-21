@@ -1,5 +1,6 @@
 import array
 import math
+import random
 
 # An python array is like a restricted python list 
 # for storing binary data.
@@ -48,10 +49,7 @@ def makePacket(colors):
         
 colorArray = []
 for i in range(150):
-    if i % 2 == 0:
-        colorArray.append((0, 255, 0))
-    else:
-        colorArray.append((0, 0, 255))
+    colorArray.append((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
 
 data = (makePacket(colorArray))
 
