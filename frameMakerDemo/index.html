@@ -26,6 +26,8 @@
 </table>
 <br>
 <button id = "sendFrame">Send Frame</button>
+<button id = "clearFames">Clear Frame</button>
+<input type="number" id="time" value="1"><br><br>
 <script>let colorInput = document.querySelector('#color');
     let hex = document.querySelector('#hex');
     var mouseDown = 0;
@@ -65,15 +67,23 @@
             var led = document.getElementById(name);
             colors.push(led.style.backgroundColor);
     } 
-
+    colors.push("sec=" + document.getElementById("time").value);
     const Http = new XMLHttpRequest();
     const url='http://192.168.1.38:5000/';
     Http.open("POST", url);
     Http.send(colors);
         
     }
+
+    function clearFames(){
+        const Http = new XMLHttpRequest();
+    const url='http://192.168.1.38:5000/clear';
+    Http.open("GET", url);
+    Http.send();
+    }
     
-    document.getElementById("sendFrame").setAttribute("onclick", "sendFrame()")</script>
+    document.getElementById("sendFrame").setAttribute("onclick", "sendFrame()");
+    document.getElementById("clearFames").setAttribute("onclick", "clearFames()");</script>;
 </body>
 
 
