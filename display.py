@@ -60,6 +60,7 @@ byte = f.read(1)
 while byte:
     readData.append(int.from_bytes(byte, "big"))
     byte = f.read(1)
+print(readData)
 readFrame(readData)
 time.sleep(3)
 readFrame(readData)
