@@ -50,8 +50,8 @@ def readFrame(data):
         bits = bits[sizeOfInd:]
     findArray = data[1 + (3 * numColors):]
     findInd = findArray.index(0)
-    data = data[(1 + (3 * numColors) + findInd):]
-    print(data)
+    data = data[(2 + (3 * numColors) + findInd):]
+    return data
     pixels.show()
 
 
@@ -61,9 +61,7 @@ byte = f.read(1)
 while byte:
     readData.append(int.from_bytes(byte, "big"))
     byte = f.read(1)
-print(readData)
-readFrame(readData)
-print(readData)
+readData = readFrame(readData)
 time.sleep(3)
 readFrame(readData)
 f.close()
