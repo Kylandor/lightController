@@ -7,6 +7,7 @@ import random
 #
 data1 = array.array('B')  # create array of bytes.
 data2 = array.array('B') 
+superData = array.array('B') 
 def makePacket(colors):
     data = array.array('B')
     uniqueColors = []
@@ -47,28 +48,17 @@ def makePacket(colors):
 
 
         
-colorArray = []
+colorArray = [(0,0 ,0)] * 150
 for i in range(150):
-    colorArray.append((255, 0,0))
-
-data1 = (makePacket(colorArray))
+    colorArray[i] = (255, 0,0)
+    data1 = (makePacket(colorArray))
+    superData += data1
 
 
 
 # Write the array at once to a file
 #
 f = open('frames', 'wb')
-data1.tofile(f)
-f.close()
-
-colorArray = []
-for i in range(150):
-    colorArray.append((0, 0, 255))
-
-data2 = (makePacket(colorArray))
-
-superData = (data2 + data1) * 30
-
-f = open('frames', 'ab')
 superData.tofile(f)
 f.close()
+
