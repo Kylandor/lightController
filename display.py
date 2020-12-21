@@ -66,5 +66,7 @@ while len(readData) != 0:
     readData = readFrame(readData)
     if float(sys.argv[1]) - (time.time()-start) > 0:
         time.sleep(float(sys.argv[1]) - (time.time()-start))
+    else:
+        print("late")
 f.close()
     
