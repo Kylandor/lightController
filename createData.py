@@ -49,7 +49,7 @@ def makePacket(colors):
         
 colorArray = []
 for i in range(150):
-    colorArray.append((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+    colorArray.append((255, 0,0))
 
 data = (makePacket(colorArray))
 
@@ -62,3 +62,12 @@ f = open('frames', 'wb')
 data.tofile(f)
 f.close()
 
+colorArray = []
+for i in range(150):
+    colorArray.append((0, 0, 255))
+
+data = (makePacket(colorArray))
+
+f = open('frames', 'ab')
+data.tofile(f)
+f.close()
