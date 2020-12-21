@@ -3,6 +3,8 @@ import neopixel
 import atexit
 import time
 import sys
+import array
+import math
 from random import randrange
 
 def exit_handler():
