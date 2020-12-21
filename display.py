@@ -20,25 +20,41 @@ pixels = neopixel.NeoPixel(
     board.D18, NUM_LEDS, brightness=0.8, auto_write=False, pixel_order=ORDER
 )
 
-firstLine = True
-data = []
-f = open("data.txt" , "r")
-for x in f:
-    data.append(x)
-while True:
-    curTime = time.time()
-    if firstLine:
-        cur = data[0]
-    if not firstLine:
-        cur = data[1]
+def readFrame(data):
+    global pixels
+    numColors = data[0]
+    allColors  = []
+    sizeOfInd = math.ceil(math.log2(numColors + 1))
+    for i in range(numColors):
+        allColors.append((data[1 + i * 3 + 0], data[1 + i * 3 + 1], data[1 + i * 3 + 2]))
+    print(allColors)
+    bits = ""
+    curInd = 1 + (3*numColors) 
+    while True:
+        curItem = data[curInd]
+        if curItem == 0:
+            break
+        cur = bin(curItem)[2:]
+        if len(cur) != 8:
+            cur = "0" * (8-len(cur)) + cur
+        bits += cur
+        curInd += 1
+    ledInd = 0
+    while len(bits) != 0:
+        ledColorIndex = bits[:sizeOfInd]
+        ledColorIndex = int(ledColorIndex, 2) -1
+        if ledColorIndex != -1:
+             pixels[ledInd] = allColors[ledColorIndex]
+        ledInd +=1
+        bits = bits[sizeOfInd:]
 
-    for ind, i in enumerate(cur):
-        if i == "0":
-            pixels[ind] = (0, 255, 0)
-        elif i == "1":
-            pixels[ind] = (255, 0, 0)
-        
-    pixels.show()
-    firstLine = not firstLine
-    time.sleep(float(sys.argv[1]) - (time.time()-curTime))
+
+f =  open('frames', 'rb')
+readData = []
+byte = f.read(1)
+while byte:
+    readData.append(int.from_bytes(byte, "big"))
+    byte = f.read(1)
+readFrame(readData)
+f.close()
     
