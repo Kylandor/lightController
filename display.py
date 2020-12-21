@@ -64,7 +64,7 @@ while byte:
 while len(readData) != 0: 
     start = time.time()
     readData = readFrame(readData)
-    if 0.5 - (time.time()-start) > 0:
-        time.sleep(sys.argv[1] - (time.time()-start))
+    if float(sys.argv[1]) - (time.time()-start) > 0:
+        time.sleep(float(sys.argv[1]) - (time.time()-start))
 f.close()
     
