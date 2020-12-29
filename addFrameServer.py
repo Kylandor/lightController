@@ -30,7 +30,7 @@ def clearFrame():
 
 @app.route("/getFrames", methods = ['GET'] )
 def getFrames():
-    return send_file('frame', attachment_filename='frame')
+    return send_file('frames', attachment_filename='frames')
 
 if __name__ == '__main__':
     app.debug = True

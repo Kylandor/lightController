@@ -12,7 +12,7 @@ def exit_handler():
     pixels.fill((0, 0, 0))
     pixels.show()
 
-#atexit.register(exit_handler)
+atexit.register(exit_handler)
 
 print("displaying...")
 
