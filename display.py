@@ -55,7 +55,7 @@ def readFrame(data):
     pixels.show()
     return data
 
-url = "192.168.1.38:5000/getFrames"
+url = "http://192.168.1.38:5000/getFrames"
 r = requests.get(url, allow_redirects=True)
 open('frames', 'wb').write(r.content)
 f =  open('frames', 'rb')
