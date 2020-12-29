@@ -5,6 +5,7 @@ import time
 import sys
 import array
 import math
+import requests
 from random import randrange
 
 def exit_handler():
