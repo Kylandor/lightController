@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, jsonify, request
+from flask import Flask, render_template, url_for, jsonify, request, send_file
 import math
 import createData
 
@@ -27,6 +27,10 @@ def home():
 def clearFrame():
     open("frames", 'w').close()
     return "cleared"
+
+@app.route("/getFrames", methods = ['GET'] )
+def getFrames():
+    return send_file('frame', attachment_filename='frame')
 
 if __name__ == '__main__':
     app.debug = True
